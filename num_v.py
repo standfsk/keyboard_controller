@@ -1,55 +1,60 @@
 import pyautogui
 from pynput.keyboard import Listener, Key, KeyCode, Controller
+import copy
 keyboard = Controller()
+x = 1450
+y = 268
+addy = 38
+addy2 = 52
+
 def handlePress( key ):
     print( 'Press: {}'.format( key ) )
 def handleRelease( key ):
     if key == KeyCode(char='1'):
         # 1: 통과
-        pyautogui.moveTo(1450, 268)
+        pyautogui.moveTo(x, y)
         pyautogui.click()
     elif key == KeyCode(char='2'):
         # 2: 레이블 명칭 오류
-        pyautogui.moveTo(1450, 310)
+        pyautogui.moveTo(x, y+addy*1)
         pyautogui.click()
     elif key == KeyCode(char='3'):
         # 3: 영역 설정 오류
-        pyautogui.moveTo(1450, 348)
+        pyautogui.moveTo(x, y+addy*2)
         pyautogui.click()
     elif key == KeyCode(char='4'):
         # 4: 영역/레이블 설정 오류
-        pyautogui.moveTo(1450, 386)
+        pyautogui.moveTo(x, y+addy*3)
         pyautogui.click()
     elif key == KeyCode(char='5'):
         # 5: 과설정
-        pyautogui.moveTo(1450, 421)
+        pyautogui.moveTo(x, y+addy*4)
         pyautogui.click()
     elif key == KeyCode(char='6'):
         # 6: 테스트 오류
-        pyautogui.moveTo(1450, 461)
+        pyautogui.moveTo(x, y+addy*5)
         pyautogui.click()
     elif key == KeyCode(char='7'):
         # 7: 기타
-        pyautogui.moveTo(1450, 500)
+        pyautogui.moveTo(x, y+addy*6)
         pyautogui.click()
     elif key == KeyCode(char='8'):
         # 8: 코멘트 입력창 선택
-        pyautogui.moveTo(1488, 552)
+        pyautogui.moveTo(x, y+addy*6+addy2)
         pyautogui.click()
     elif key == KeyCode(char='9') or key == Key.alt_l:
         # 9: 코멘트 입력창 내용 삭제
-        pyautogui.moveTo(1488, 552)
+        pyautogui.moveTo(x, y+addy*6+addy2)
         pyautogui.click()
         keyboard.press(Key.ctrl.value)
         keyboard.press('a')
         keyboard.release(Key.ctrl.value)
         keyboard.release('a')
         pyautogui.hotkey('del')
-        pyautogui.moveTo(1488, 652)
+        pyautogui.moveTo(x, y+addy*6+addy2*2)
         pyautogui.click()
-    
-    # 종료
-    if key == Key.esc:
+    elif key == Key.esc:
+        # 종료
         return False
  
 with Listener(on_press=handlePress, on_release=handleRelease) as listener:
