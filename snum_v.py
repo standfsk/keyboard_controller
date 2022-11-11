@@ -1,16 +1,17 @@
 import pyautogui
 from pynput.keyboard import Listener, Key, KeyCode, Controller
-keyboard = Controller()
+# 기능 x,y 세팅
 x = 1450
 y = 268
 addy = 38
 addy2 = 52
-
+# 메뉴 x,y 세팅
 menu_y = 175
 i_x = 1458
 c_x = 1536
 r_x = 1660
 
+keyboard = Controller()
 def handlePress( key ):
     print( 'Press: {}'.format( key ) )
 def handleRelease( key ):
@@ -53,11 +54,10 @@ def handleRelease( key ):
         # 8: 반려 메뉴로 이동
         pyautogui.moveTo(r_x, menu_y)
         pyautogui.click()
-    
-    # 종료
-    if key == Key.esc:
+    elif key == Key.esc:
+        # esc: 프로그램 종료
         return False
- 
+    
 with Listener(on_press=handlePress, on_release=handleRelease) as listener:
     listener.join()
 
@@ -70,3 +70,4 @@ with Listener(on_press=handlePress, on_release=handleRelease) as listener:
 # 6: 검수 메뉴로 이동
 # 7: 착장정보 메뉴로 이동
 # 8: 반려 메뉴로 이동
+# esc: 프로그램 종료
