@@ -1,36 +1,41 @@
 import pyautogui
 from pynput.keyboard import Listener, Key, KeyCode, Controller
 keyboard = Controller()
+x = 1450
+y = 268
+addy = 38
+addy2 = 52
+
 def handlePress( key ):
     if hasattr(key, 'vk') and 96 <= key.vk <= 105:
         print( 'Press: {}'.format( key ) )
 def handleRelease( key ):
     if hasattr(key, 'vk') and 96 == key.vk:
         # Numpad0: 코멘트 입력창 내용 삭제
-        pyautogui.moveTo(1488, 552)
+        pyautogui.moveTo(x, y+addy*6+addy2)
         pyautogui.click()
         keyboard.press(Key.ctrl.value)
         keyboard.press('a')
         keyboard.release(Key.ctrl.value)
         keyboard.release('a')
         pyautogui.hotkey('del')
-        pyautogui.moveTo(1488, 652)
+        pyautogui.moveTo(x, y+addy*6+addy2*2)
         pyautogui.click()
     elif hasattr(key, 'vk') and 97 == key.vk:
         # Numpad1: 통과
-        pyautogui.moveTo(1450, 268)
+        pyautogui.moveTo(x, y)
         pyautogui.click()
     elif hasattr(key, 'vk') and 98 == key.vk:
         # Numpad2: 레이블 명칭 오류
-        pyautogui.moveTo(1450, 310)
+        pyautogui.moveTo(x, y+addy*1)
         pyautogui.click()
     elif hasattr(key, 'vk') and 99 == key.vk:
         # Numpad3: 영역 설정 오류
-        pyautogui.moveTo(1450, 348)
+        pyautogui.moveTo(x, y+addy*2)
         pyautogui.click()
     elif hasattr(key, 'vk') and 100 == key.vk:
         # Numpad4: 코멘트 입력창 선택
-        pyautogui.moveTo(1488, 552)
+        pyautogui.moveTo(x, y+addy*6+addy2)
         pyautogui.click()
     
     # 종료
