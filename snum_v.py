@@ -6,6 +6,11 @@ y = 268
 addy = 38
 addy2 = 52
 
+menu_y = 175
+i_x = 1458
+c_x = 1536
+r_x = 1660
+
 def handlePress( key ):
     print( 'Press: {}'.format( key ) )
 def handleRelease( key ):
@@ -36,6 +41,18 @@ def handleRelease( key ):
         pyautogui.hotkey('del')
         pyautogui.moveTo(x, y+addy*6+addy2*2)
         pyautogui.click()
+    elif key == KeyCode(char='6'):
+        # 6: 검수 메뉴로 이동
+        pyautogui.moveTo(i_x, menu_y)
+        pyautogui.click()
+    elif key == KeyCode(char='7'):
+        # 7: 착장정보 메뉴로 이동
+        pyautogui.moveTo(c_x, menu_y)
+        pyautogui.click()
+    elif key == KeyCode(char='8'):
+        # 8: 반려 메뉴로 이동
+        pyautogui.moveTo(r_x, menu_y)
+        pyautogui.click()
     
     # 종료
     if key == Key.esc:
@@ -50,3 +67,6 @@ with Listener(on_press=handlePress, on_release=handleRelease) as listener:
 # 3: 영역 설정 오류
 # 4: 코멘트 입력창 선택
 # 5: 코멘트 입력창 내용 삭제
+# 6: 검수 메뉴로 이동
+# 7: 착장정보 메뉴로 이동
+# 8: 반려 메뉴로 이동
