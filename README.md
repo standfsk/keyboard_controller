@@ -1,5 +1,5 @@
 # keyboard_controller
-this is keyboard_controller
+라벨링 하다가 귀찮아서 만든 툴
 
 프로그램 실행순서 <br>
 - snum_v.py download
